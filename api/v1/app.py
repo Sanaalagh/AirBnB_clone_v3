@@ -4,13 +4,20 @@ Flask application setup for API version 1
 This module initializes the Flask application,
 registers API endpoints, and defines the main entry point.
 """
-from flask import Flask
+from flask import Flask, jsonify
 from models import storage
 from api.v1.views import app_views
 import os
 
 app = Flask(__name__)
+app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 app.register_blueprint(app_views)
+
+
+@app.errorhandler(404)
+def not_found(error):
+    """Custom 404 Not found error handler."""
+    return jsonify({"error": "Not found"}), 404
 
 
 @app.teardown_appcontext
