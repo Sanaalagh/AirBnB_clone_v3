@@ -4,8 +4,11 @@ Amenity API Endpoints
 Defines endpoints for managing Amenity objects via RESTful API methods.
 """
 from flask import jsonify, abort, request, make_response
-from models import storage, Amenity
 from api.v1.views import app_views
+from models import storage
+from models.State import State
+from models.city import City
+from models.amenity import Amenity
 
 
 @app_views.route(
