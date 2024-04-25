@@ -7,11 +7,13 @@ registers API endpoints, and defines the main entry point.
 from flask import Flask, jsonify
 from models import storage
 from api.v1.views import app_views
+from flask_cors import CORS
 import os
 
 app = Flask(__name__)
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 app.register_blueprint(app_views)
+CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
 
 
 @app.errorhandler(404)
