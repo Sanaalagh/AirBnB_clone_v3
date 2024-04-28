@@ -14,26 +14,21 @@ from models.city import City
 from models.amenity import Amenity
 from models.review import Review
 
+classes = {"users": "User", "places": "Place", "states": "State",
+           "cities": "City", "amenities": "Amenity",
+           "reviews": "Review"}
+
 
 @app_views.route('/status', methods=['GET'])
 def status():
-    """Returns the status of the API.
-    Endpoint: GET /api/v1/status
-    Returns:
-        JSON response with the status of the API.
-    """
-    return jsonify({"status": "OK"})
+    ''' routes to status page '''
+    return jsonify({'status': 'OK'})
 
 
 @app_views.route('/stats', methods=['GET'])
-def get_stats():
-    """Retrieves the number of each object type."""
-    stats = {
-        "amenities": storage.count("Amenity"),
-        "cities": storage.count("City"),
-        "places": storage.count("Place"),
-        "reviews": storage.count("Review"),
-        "states": storage.count("State"),
-        "users": storage.count("User")
-    }
-    return jsonify(stats)
+def count():
+    '''retrieves the number of each objects by type'''
+    count_dict = {}
+    for cls in classes:
+        count_dict[cls] = storage.count(classes[cls])
+    return jsonify(count_dict)
