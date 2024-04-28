@@ -5,7 +5,8 @@ Defines endpoints for managing User objects via RESTful API methods.
 """
 
 from flask import jsonify, abort, request
-from models import storage, User
+from models import storage
+from models.user import User
 from api.v1.views import app_views
 
 
