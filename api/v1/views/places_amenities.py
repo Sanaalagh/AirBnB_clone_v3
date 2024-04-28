@@ -2,7 +2,10 @@
 """places_amenities"""
 from flask import jsonify, abort
 from api.v1.views import app_views
-from models import storage, Place, Amenity
+from models import storage
+from models.place import Place
+from models.amenity import Amenity
+
 
 
 @app_views.route(
