@@ -6,9 +6,10 @@ registers API endpoints, and defines the main entry point.
 """
 from flask import Flask, jsonify
 from models import storage
-from api.v1.views import app_views
 from flask_cors import CORS
 import os
+from api.v1.views import app_views
+
 
 app = Flask(__name__)
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
