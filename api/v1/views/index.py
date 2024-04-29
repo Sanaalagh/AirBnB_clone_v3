@@ -4,6 +4,7 @@ Defines routes for basic index operations of the API.
 This module contains the route definitions for status checks
 and other basic API operations.
 """
+from flask import Blueprint
 from api.v1.views import app_views
 from flask import jsonify
 from models import storage
