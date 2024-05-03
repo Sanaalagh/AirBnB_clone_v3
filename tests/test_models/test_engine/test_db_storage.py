@@ -56,13 +56,11 @@ class TestDBStorage(unittest.TestCase):
     def test_count(self):
         """Test the `count` method counts all objects in storage"""
         initial_count = models.storage.count()
-        new_state = State(name="Nevada")
+        new_state = State(name="California")
         models.storage.new(new_state)
         models.storage.save()
         self.assertEqual(models.storage.count(), initial_count + 1)
-        models.storage.delete(new_state)
-        models.storage.save()
-
+    
     def test_count_specific_class(self):
         """Test the `count` method with a class name argument"""
         state_count_before = models.storage.count(State)
